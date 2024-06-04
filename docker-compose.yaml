@@ -2,20 +2,17 @@ version: '3.8'
 
 services:
   frontend:
-    build: ./frontend
+    build: ./frontend/index.html
     ports:
       - "80:80"
     depends_on:
       - backend
 
   backend:
-    build: ./backend
+    build: ./backend/main.py
     ports:
       - "5000:5000"
-    environment:
-      - DATABASE_URL=postgres://postgres:password@db:5432/tb_analyzer
-    depends_on:
-      - db
+
 
   db:
     image: postgres
